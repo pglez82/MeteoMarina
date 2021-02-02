@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<div class="panel panel-primary">
+    <div class="panel-heading">
+        <h3 class="panel-title" ng-click="prediccionProvinciaCollapsed = !prediccionProvinciaCollapsed">Predicción {{pred.provincia}} (2 días)
+            <span ng-class="prediccionProvinciaCollapsed ? 'glyphicon glyphicon-chevron-down' : 'glyphicon glyphicon-chevron-up'"></span>
+        </h3>
+    </div>
+
+    <uib-carousel active="0" interval="-1">
+        <uib-slide ng-repeat="slide in pred.mapasSig | orderBy:'+slide.id'" index="slide.id" >
+            <img style="width:100%" ng-src="{{slide.src}}" >
+        </uib-slide>
+    </uib-carousel>
+
+    <div class="panel-body">
+        <div id="prediccionProvincia" class="panel panel-info" ng-repeat="prediccionProvincia in pred.prediccionesProvincia" uib-collapse="prediccionProvinciaCollapsed">
+            <div class="panel-heading">
+                <h4 class="panel-title">Predicción para {{prediccionProvincia.info}}</h4>
+            </div>
+            <div class="panel-body">
+                <imprimir-timestamp timestamp="prediccionProvincia.timestamp"></imprimir-timestamp>
+                <p>{{prediccionProvincia.texto}}</p>
+<!--                <button type="button" class="btn btn-default" ng-click="prediccionProvincia.tempCollapsed = !prediccionProvincia.tempCollapsed">Temperaturas</button>
+                <div uib-collapse="prediccionProvincia.tempCollapsed">
+                    <table class="table table-condensed">
+                        <thead>
+                            <tr>
+                                <th>Ciudad</th>
+                                <th>Máxima</th>
+                                <th>Mínima</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="ciudad in prediccionProvincia.tempCiudades">
+                                <td>{{ciudad.nombre}}</td>
+                                <td>{{ciudad.maxima}}</td>
+                                <td>{{ciudad.minima}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>-->
+            </div>
+        </div>
+    </div>
+</div>

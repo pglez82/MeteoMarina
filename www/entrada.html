@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<div class="container" ng-controller="EntradaController as entrada">
+    <form class="form-horizontal" style="margin-top:50px">
+        <fieldset class="form-group">
+
+            <div class="row">
+                <div class="col-sm-offset-4 col-sm-4 col-xs-9 col-xs-offset-1">
+                    <div class="col-sm-8 col-xs-9">
+                        <select  id="zona" ng-model="zonaSel" class="form-control">
+                            <option value="">Zona de navegación</option>
+                            <option ng-repeat="zonaNavegacion in entrada.zonasNavegacion" value="{{zonaNavegacion.nombre}}">{{zonaNavegacion.nombre}}</option>
+                        </select>
+                    </div>
+                    <div class="col-sm-4 col-xs-3">
+                        <a ng-href="#entrada" ng-click="GetPosicion()" class="btn btn-default">
+                            <span class="glyphicon glyphicon-screenshot"></span> GPS 
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="row" style="margin-top: 10px">
+                <div class="checkbox col-sm-4 col-sm-offset-4 col-xs-6 col-xs-offset-3" >
+                    <label><input type="checkbox"  ng-model="soloTexto">Solo texto (más rápida)</label>
+                </div>
+            </div>
+            <div class="row" style="margin-top: 10px">
+                <a class="btn btn-primary col-sm-4 col-sm-offset-4 col-xs-6 col-xs-offset-3" href="#prediccion/{{zonaSel}}/{{soloTexto}}">Ver predicción</a>
+            </div>
+        </fieldset>
+    </form>
+    <predicciones-salvadas></predicciones-salvadas>
+</div>

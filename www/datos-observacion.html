@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<div class="panel panel-primary">
+    <div class="panel-heading">
+        <h3 ng-click="datosObservacionCollapsed = !datosObservacionCollapsed" class="panel-title">Datos Observación{{pred.prediccionMar.nombreZona}}
+            <span ng-class="datosObservacionCollapsed ? 'glyphicon glyphicon-chevron-down' : 'glyphicon glyphicon-chevron-up'"></span>
+        </h3>
+    </div>
+    <div id="datosObservacion" uib-collapse="datosObservacionCollapsed" class="panel-body">
+        <img style="width:100%" ng-src="{{pred.tempMar}}" ng-pinch-zoom/> 
+    </div>
+    <div map-lazy-load="https://maps.google.com/maps/api/js"
+  map-lazy-load-params="{{googleMapsUrl}}">
+        <ng-map id="map" center="{{pred.lat}},{{pred.lon}}" default-style="true" zoom="8">
+            <info-window id="bar" ng-style="width=100%">
+                <div ng-non-bindable>
+                    <div>
+                        <canvas class="chart chart-line" chart-series="pred.datosestacion.series" chart-dataset-override="pred.datosestacion.datasetOverride" chart-data="pred.datosestacion.vv" chart-labels="pred.datosestacion.horas" chart-options="pred.datosestacion.opciones"></canvas> 
+                    </div>
+                </div>
+            </info-window>
+            <marker id="{{estacion.cod}}" position="{{estacion.pos}}" on-click="MostrarDatosEstacion(estacion.cod)" ng-repeat="estacion in pred.estaciones"></marker>
+        </ng-map>
+</div>
+</div>

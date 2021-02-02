@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<div class="panel panel-primary">
+    <div class="panel-heading">
+        <h3 ng-click="situacionActualCollapsed = !situacionActualCollapsed" class="panel-title">Situación actual
+            <span ng-class="situacionActualCollapsed ? 'glyphicon glyphicon-chevron-down' : 'glyphicon glyphicon-chevron-up'"></span>
+        </h3>
+        
+    </div>
+    <div id="situacion" uib-collapse="situacionActualCollapsed" class="panel-body">
+        <p>{{pred.prediccionMar.textoSituacion}}</p>
+        <uib-carousel active="0" interval="-1">
+            <uib-slide ng-repeat="slide in pred.mapaFrentes | orderBy:'+slide.id'" index="slide.id" >
+                <img style="width:100%" ng-src="{{slide.url}}" ng-pinch-zoom>
+            </uib-slide>
+        </uib-carousel>
+    </div>
+    <div>
+  </div>
+</div>

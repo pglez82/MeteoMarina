@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<div class="container" ng-controller="PrediccionController as pred">
+    <div class="col-sm-12 box-content bottom" style="margin-top:25px">
+        <h2 style="display:inline" class="" >Predicción para {{pred.provincia}}
+            <a ng-show="!datosSalvados" ng-click="GuardarPrediccion()" class="btn btn-default btn-sm">Guardar predicción
+                <span class="glyphicon glyphicon-floppy-save"></span></a></h2>
+        <br> <hr>
+    </div>
+    <div class="alert alert-success" ng-show="dialogoAbierto">
+        <button type="button" class="close" ng-click="dialogoAbierto = !dialogoAbierto">×</button>
+        <span style="padding-right:5px" class="glyphicon glyphicon-saved"></span><strong>Hecho!</strong> Se han salvado los datos en tu  navegador correctamente.
+    </div>
+
+    <div class="col-sm-12 col-md-6">
+        <situacion-actual></situacion-actual>
+        <datos-observacion></datos-observacion>
+        <prediccion-mar></prediccion-mar>
+    </div>
+    <div class="col-sm-12 col-md-6">
+        <otras-pred></otras-pred>
+        <prediccion-provincia></prediccion-provincia>
+    </div>
+
+
+</div>

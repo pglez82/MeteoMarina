@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<div class="panel panel-primary">
+    <div class="panel-heading">
+        <h3 ng-click="otrasPrediccionesCollapsed = !otrasPrediccionesCollapsed" class="panel-title">Otras predicciones
+            <span ng-class="otrasPrediccionesCollapsed ? 'glyphicon glyphicon-chevron-down' : 'glyphicon glyphicon-chevron-up'"></span>
+        </h3>
+    </div>
+    <div id="otrasPredicciones" uib-collapse="otrasPrediccionesCollapsed" class="panel-body">
+        <h3>MetOffice UK</h3>
+        <p class="text-primary">Fecha y hora de parte: {{pred.otrasPredicciones.meteouk.fecha}}, {{pred.otrasPredicciones.meteouk.hora}} UTC (Predicciones cuatro veces al día 23h, 05h, 11h, 17h UTC, válidos 24 horas)</p>
+        <p>{{pred.otrasPredicciones.meteouk.general}}</p>
+        <p>Estado mar: {{pred.otrasPredicciones.meteouk.estadomar}}</p>
+        <p>Visibilidad: {{pred.otrasPredicciones.meteouk.visibilidad}}</p>
+        <p>Tiempo: {{pred.otrasPredicciones.meteouk.tiempo}}</p>
+        <p>Viento: {{pred.otrasPredicciones.meteouk.viento}}</p>
+        <h3>MeteoFrance</h3>
+        <p class="text-primary">Boletín de la mañana a las 9:30h UTC Y boletin de la tarde a las 16:30h UTC</p>
+        <p ng-bind-html="pred.otrasPredicciones.meteofrance.hora" class="text-primary"></p>
+        <div ng-bind-html="pred.otrasPredicciones.meteofrance.boletin"></div>
+    </div>
+</div>
+
+

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<div class="panel panel-primary">
+    <div class="panel-heading">
+        <h3 ng-click="prediccionMarCollapsed = !prediccionMarCollapsed" class="panel-title">Predicción Costera{{pred.prediccionMar.nombreZona}}
+            <span ng-class="prediccionMarCollapsed ? 'glyphicon glyphicon-chevron-down' : 'glyphicon glyphicon-chevron-up'"></span>
+        </h3>
+    </div>
+    <div id="prediccionMar" uib-collapse="prediccionMarCollapsed" class="panel-body">
+        <p class="text-warning">Predicciones a las 12:00h y a las 20:00h a diario</p>
+        <imprimir-timestamp timestamp="pred.prediccionMar.timestamp"></imprimir-timestamp>
+        <p class="text-primary">Aviso: {{pred.prediccionMar.aviso}}</p>
+        <div ng-repeat="prediccion in pred.prediccionMar.predicciones">
+            <h4>{{prediccion.nombre}}</h4>
+            <p>{{prediccion.texto}}</p>
+        </div>
+        <h4>Tendencia</h4>
+        <imprimir-timestamp timestamp="pred.prediccionMar.tendencia.timestamp"></imprimir-timestamp>
+        <p>{{pred.prediccionMar.tendencia.texto}}</p>
+        <div style="height: auto">
+            <uib-carousel active="0" interval="-1">
+                <uib-slide ng-repeat="slide in pred.mapasMar | orderBy:'+slide.id'" index="slide.id" >
+                    <img style="width:100%" ng-src="{{slide.src}}" >
+                    <div class="carousel-caption" style="color:gray">
+                        <p>{{slide.titulo}}</p>
+                    </div>
+                </uib-slide>
+            </uib-carousel>
+        </div>
+    </div>
+</div>
+
+
